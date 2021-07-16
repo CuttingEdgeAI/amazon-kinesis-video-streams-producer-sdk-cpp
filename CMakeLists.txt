@@ -117,7 +117,12 @@ else()
 endif()
 
 if (WIN32)
-  set(PKG_CONFIG_EXECUTABLE "C:\\gstreamer\\1.0\\x86_64\\bin\\pkg-config.exe")
+  if (MSVC)
+    set(PKG_CONFIG_EXECUTABLE "C:\\gstreamer\\1.0\\msvc_x86_64\\bin\\pkg-config.exe")
+  endif()
+  if (MINGW)
+    set(PKG_CONFIG_EXECUTABLE "C:\\gstreamer\\1.0\\mingw_x86_64\\bin\\pkg-config.exe")
+  endif()
 endif()
 
 ############# Enable Sanitizers ############
