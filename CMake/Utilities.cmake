@@ -57,7 +57,9 @@ function(build_dependency lib_name)
   else()
     set(lib_file_name ${lib_name})
     if (${lib_name} STREQUAL "openssl")
-      set(lib_file_name ssl)
+      set(lib_file_name "ssl" "libssl")
+    else (${lib_name} STREQUAL "log4cplus")
+      set(lib_file_name "log4cplus" "log4cplusD")
     endif()
 
     find_library(
@@ -79,8 +81,9 @@ function(build_dependency lib_name)
   file(REMOVE_RECURSE ${KINESIS_VIDEO_OPEN_SOURCE_SRC}/lib${lib_name})
 
   # build library
+  # :/ Changing this to ./CMake... since it breaks build when included in other projects
   configure_file(
-    ${CMAKE_SOURCE_DIR}/CMake/Dependencies/lib${lib_name}-CMakeLists.txt
+    ./CMake/Dependencies/lib${lib_name}-CMakeLists.txt
     ${KINESIS_VIDEO_OPEN_SOURCE_SRC}/lib${lib_name}/CMakeLists.txt COPYONLY)
   execute_process(
     COMMAND ${CMAKE_COMMAND} ${build_args}
