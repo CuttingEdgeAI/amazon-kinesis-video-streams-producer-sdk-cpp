@@ -9,7 +9,7 @@ include(ExternalProject)
 # it or a better fix merged to the upstream.
 ExternalProject_Add(libkvscproducer-download
 	GIT_REPOSITORY    https://github.com/vattay/amazon-kinesis-video-streams-producer-c.git
-	GIT_TAG           06bac7576b45fd91437dd31abe086ac98b97f1f7
+	GIT_TAG           e8216ed30d67dc351817237f84b9b27750e1d53b
 	SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/kvscproducer-src"
 	BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/kvscproducer-build"
 	CONFIGURE_COMMAND ""
